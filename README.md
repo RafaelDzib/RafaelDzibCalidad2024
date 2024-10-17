@@ -1,2 +1,2 @@
-# MariaBalamCalidad2024
+# RafaelDzibCalidad2024
 Repo para la clase de calidad
