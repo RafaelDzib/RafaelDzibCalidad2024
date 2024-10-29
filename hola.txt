@@ -1,7 +1,0 @@
-Hola, como estas
-esta es uuna prueba de git
-...
-esta es otra linea local
-Agregando una linea desde repo remoto...
-no lo hagan
-hola
