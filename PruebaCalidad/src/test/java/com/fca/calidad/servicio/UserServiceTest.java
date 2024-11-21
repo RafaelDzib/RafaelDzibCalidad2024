@@ -132,7 +132,7 @@ class UserServiceTest {
 			
 	        List<User> userList = new ArrayList<>();
 	        userList.add(new User("Mari", "Maria@correo.com", "12345678"));
-	        userList.add(new User("Didier", "Didier@correo.com", "12345678"));
+	        userList.add(new User("Didi", "Didier@correo.com", "12345678"));
 	        when(dao.findAll()).thenReturn(userList);
 
 	        // Ejercicio
@@ -141,7 +141,7 @@ class UserServiceTest {
 	        // Verificación
 	        
 	        assertThat(result, hasItem(hasProperty("name", is("Mari"))));
-	        assertThat(result, hasItem(hasProperty("name", is("Didier"))));
+	        assertThat(result, hasItem(hasProperty("name", is("Didi"))));
 	    }
 		
 		//Borrar usuario
