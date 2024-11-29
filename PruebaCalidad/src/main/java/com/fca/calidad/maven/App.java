@@ -13,7 +13,7 @@ public class App {
         
         DAOUserSQLite dao = new DAOUserSQLite();
         User usuario = new User("nombre","correo","password");
-        int id = dao.save(usuario);    
+        int id = dao.save(usuario);
     
     	usuario.setId(id);
     	

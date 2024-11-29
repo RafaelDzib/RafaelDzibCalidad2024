@@ -25,7 +25,7 @@ public class DAOUserSQLite implements IDAOUser {
 			// Establish the driver connector
 			//Class.forName(DRIVER_NAME);
 			// Set the URI for connecting the MySql database
-			con = DriverManager.getConnection("jdbc:sqlite:C:\\\\Users\\\\rafae\\\\OneDrive\\\\Documentos\\\\users.db", "", "");
+			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\rafae\\OneDrive\\Documentos\\users.db", "", "");
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -48,7 +48,7 @@ public class DAOUserSQLite implements IDAOUser {
 			rs = preparedStatement.executeQuery();
 
 			// Obtain the pointer to the data in generated table
-			rs.next();
+			if (rs.next()) {
 
 			int id = rs.getInt(1);
 			String username  = rs.getString(2);
@@ -68,6 +68,7 @@ public class DAOUserSQLite implements IDAOUser {
 			System.out.println("Email: " + result.getEmail());
 			System.out.println("Tipo: " + result.isLogged() + "\n");
 			// Close connection with the database
+			}
 			connection.close();
 			rs.close();
 			preparedStatement.close();
@@ -134,7 +135,7 @@ public class DAOUserSQLite implements IDAOUser {
 			rs = preparedStatement.executeQuery();
 
 			// Obtain the pointer to the data in generated table
-			rs.next();
+			if(rs.next()) {
 
 			int id = rs.getInt(1);
 			String username  = rs.getString(2);
@@ -153,6 +154,7 @@ public class DAOUserSQLite implements IDAOUser {
 			System.out.println("Nombre: " + result.getName());
 			System.out.println("Email: " + result.getEmail());
 			System.out.println("Tipo: " + result.isLogged() + "\n");
+			}
 			// Close connection with the database
 			connection.close();
 			rs.close();

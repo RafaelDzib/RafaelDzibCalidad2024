@@ -58,4 +58,9 @@ public User findUserById(int id) {
     boolean deleteUser(int id) {
     	return dao.deleteById(id);
     }
+
+	public boolean deleteById(int userIdToDelete) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
