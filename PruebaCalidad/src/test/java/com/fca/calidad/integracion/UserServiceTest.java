@@ -58,7 +58,7 @@ class UserServiceTest extends DBTestCase{
 		return new FlatXmlDataSetBuilder().build(new FileInputStream("C:\\Users\\rafae\\git\\RafaelDzibCalidad2024\\PruebaCalidad\\src\\resource\\initDB.xml"));
 	}
 	@Test
-	void createUserTest() {
+	void createUserTest1() {
 		//Ejercicio del código
 		User usuario= userService.createUser("name","email","password");
 		//Verificacion
@@ -100,28 +100,30 @@ class UserServiceTest extends DBTestCase{
 		}
 	}
 	
+	
+	//La ultima
 	@Test
-	//El ultimo
-
 	void createUserTest3() {
 		User usuario = userService.createUser("nombre", "email", "password");
+		
 		IDatabaseConnection connection;
 		try {
-			connection = getConnection();
-			IDataSet databaseDataSet = connection.createDataSet();
-			ITable tablaReal = databaseDataSet.getTable("users");
-			IDataSet exceptedDataSet = new FlatXmlDataSetBuilder().build(new FileInputStream("C:\\Users\\rafae\\git\\RafaelDzibCalidad2024\\PruebaCalidad\\src\\resource\\initDB.xml"));
-																						   
-			ITable exceptedTable = exceptedDataSet.getTable("users");
-			
-			ITable filteredTable = DefaultColumnFilter.includedColumnsTable(tablaReal, exceptedTable.getTableMetaData().getColumns());
-			
-			Assertion.assertEquals(filteredTable, exceptedTable);
-		}catch (Exception e) {
-			
+		connection = getConnection();
+		IDataSet dataBaseDataSet = connection.createDataSet();
+		ITable tablaReal = dataBaseDataSet.getTable("users");
+		
+		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new FileInputStream("C:\\Users\\rafae\\git\\RafaelDzibCalidad2024\\PruebaCalidad\\src\\resource\\CreatedUser.xml"));
+		ITable expectedTable = expectedDataSet.getTable("users");
+		
+		ITable filteredTable = DefaultColumnFilter.includedColumnsTable(tablaReal, expectedTable.getTableMetaData().getColumns());
+		
+		Assertion.assertEquals(filteredTable, expectedTable);
+		
+		}catch (Exception e){
 			e.printStackTrace();
 			fail("Fallo create 3");
 		}
+	
 	}
 	
 	
