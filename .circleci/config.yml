@@ -12,7 +12,7 @@ jobs:
     docker:
       # Specify the version you desire here
       # See: https://circleci.com/developer/images/image/cimg/openjdk
-      - image: cimg/openjdk:23.0.1
+      - image: cimg/openjdk:17.0-browsers
 
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
@@ -24,10 +24,25 @@ jobs:
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
-      # Then run your tests!
       - run:
-          name: Test
-          command: mvn test
+          name: Calculadora
+          command: mvn -Dtest=CalculadoraTest test
+      - run:
+          name: Pruebas Mockito
+          command: mvn -Dtest=DependencyTest -Dtest=LoginTest -Dtest=com.fca.calidad.servicio.UserServiceTest -Dtest=AppTest test
+      - run:
+          name: Gatitos Test
+          command: mvn -Dtest=GatitosTest test
+      - run:
+          name: Pruebas funcionales
+          command: mvn -Dtest=CRUD test
+      - store_test_results:
+         path: test-classes 
+         
+      # Then run your tests!
+      #- run:
+          #name: Test
+          #command: mvn test
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
