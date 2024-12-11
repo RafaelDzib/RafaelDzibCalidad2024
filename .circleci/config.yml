@@ -39,6 +39,11 @@ jobs:
       - store_test_results:
          path: test-classes 
          
+      - run:
+          name: List files
+          command: ls -la
+
+         
       # Then run your tests!
       #- run:
           #name: Test
